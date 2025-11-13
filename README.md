@@ -1,13 +1,24 @@
-# CTF Pilot's Template Repository
+# Instancing Fallback
 
-## Template information
+**Challenge instancing fallback webserver**
 
-This repository, is a template repository for open-source projects within CTF Pilot.
+This repository contains a webserver, which is used as the fallback webserver for instancing.  
+It serves both "Challenge offline", "Challenge starting" and error pages for the challenge management ecosystem.
 
-It provices a EUPL-1.2 License, release system and other standard files.
+## How to run
 
-Please remove this section, and replace with relevant information.  
-Replace `<repository-name>` with the repository name in `.github/workflows/cla-assistant.yml`and `.github/workflows/release.yml`.
+For Kubernetes environments, deploy the deployment file provided in `k8s`.  
+This can be done with `kubectl`:
+
+```sh
+kubectl apply -f k8s/k8s.yml
+```
+
+The service can also be run locally, using the provided Docker compose file:
+
+```sh
+docker compose up -d
+```
 
 ## Contributing
 

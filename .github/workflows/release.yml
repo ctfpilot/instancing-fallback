@@ -13,5 +13,5 @@ jobs:
       packages: write
       id-token: write
     name: Release
-    if: github.repository == 'ctfpilot/<repository-name>'
+    if: github.repository == 'ctfpilot/instancing-fallback'
     uses: the0mikkel/ci/.github/workflows/semver-release-standalone.yml@v1.4.0

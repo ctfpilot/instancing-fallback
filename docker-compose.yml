@@ -1,0 +1,13 @@
+services:
+  instancing-fallback:
+    build: .
+    ports:
+      - "8080:80"
+    restart: always
+  development:
+    image: joseluisq/static-web-server
+    ports:
+      - "8081:80"
+    volumes:
+      - ./public:/public
+    restart: always

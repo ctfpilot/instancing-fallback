@@ -1,0 +1,72 @@
+:root {
+  --header-font: "Hack", monospace, sans-serif;
+  --body-font: "Hack", monospace, sans-serif;
+
+  --light-theme-color: #eebc1d;
+  --dark-theme-color: #eebc1d;
+  --text-light: #232323;
+  --text-dark: #f9f9f9;
+  --bg-light: #f9f9f9;
+  --bg-dark: #232323;
+
+  --theme-color: var(--light-theme-color);
+  --bg-color: var(--bg-light);
+  --text-color: var(--text-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-color: var(--dark-theme-color);
+    --bg-color: var(--bg-dark);
+    --text-color: var(--text-dark);
+  }
+}
+
+html,
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color) !important;
+  font-family: var(--body-font) !important;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding: 2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--header-font) !important;
+}
+
+a {
+  color: var(--theme-color);
+  filter: brightness(100%);
+  transition: filter 0.2s;
+}
+
+a:hover {
+  filter: brightness(95%);
+  transition: filter 0.2s;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  overflow-y: hidden;
+  align-items: center;
+}
+
+.challenge-loading {
+  display: none;
+}
+
+.wrong-domain {
+  display: none;
+}

@@ -20,6 +20,16 @@ The service can also be run locally, using the provided Docker compose file:
 docker compose up -d
 ```
 
+### Development
+
+In order to generate the pages, run the [`generator.py`](./src/generator.py) script in `src`:
+
+```sh
+python3 src/generator.py
+```
+
+*This is done automatically in the Docker container build process.*
+
 ## Contributing
 
 We welcome contributions of all kinds, from **code** and **documentation** to **bug reports** and **feedback**!

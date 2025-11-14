@@ -30,14 +30,16 @@
         [
             "@semantic-release/exec",
             {
-                "prepareCmd": "echo ${nextRelease.version} > version.txt",
+                "prepareCmd": "echo ${nextRelease.version} > version.txt && cp template/k8s.yml k8s/k8s.yml && sed -i 's/{ .Version }/${nextRelease.version}/g' k8s/k8s.yml",
                 "publishCmd": "echo 'Published version ${nextRelease.version}'"
             }
         ],
         [
             "@semantic-release/git",
             {
-                "assets": [],
+                "assets": [
+                    "k8s/k8s.yml"
+                ],
                 "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
             }
         ]

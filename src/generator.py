@@ -58,7 +58,7 @@ def replace_indented_placeholder(template, placeholder, content):
 
 def generate():
     for content_name, content_data in CONTENTS:
-        content_filename = content_name.split(".")[0]
+        content_filename = content_name
         
         layout = content_filename.split("_")[0]
         filename = content_filename.split("_")[1]

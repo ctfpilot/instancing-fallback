@@ -20,9 +20,9 @@ function checkChallengeReady() {
           .then(text => {
             // Check if 200 res has same title as this loading page
             try {
-              const doc = parser.parseFromString(text, "text/html")
+              const doc = parser.parseFromString(text, "text/html");
               if (doc.title !== document.title) {
-                location.reload()
+                location.reload();
               }
             } catch (e) {
               errorHandler(e);
@@ -34,12 +34,9 @@ function checkChallengeReady() {
 }
 
 if (re.test(subdomain)) {
-  document.getElementsByClassName("challenge-loading")[0].style.display =
-    "block";
+  document.getElementsByClassName("challenge-loading")[0].style.display = "block";
   checkChallengeReady();
   setInterval(() => checkChallengeReady(), POLL_INTERVAL);
 } else {
-  document.getElementsByClassName("wrong-domain")[0].style.display =
-    "block";
+  document.getElementsByClassName("wrong-domain")[0].style.display = "block";
 }
-

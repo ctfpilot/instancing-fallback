@@ -36,6 +36,7 @@ function checkChallengeReady() {
 if (re.test(subdomain)) {
   document.getElementsByClassName("challenge-loading")[0].style.display =
     "block";
+  checkChallengeReady();
   setInterval(() => checkChallengeReady(), POLL_INTERVAL);
 } else {
   document.getElementsByClassName("wrong-domain")[0].style.display =

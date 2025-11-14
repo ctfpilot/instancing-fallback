@@ -14,12 +14,12 @@ function checkChallengeReady() {
             // Check if 200 res has same title as this loading page
             const doc = parser.parseFromString(text, "text/html")
             if (doc.title !== document.title) {
-              location.reload(true)
+              location.reload()
             }
           })
-      } else { console.log("instance not ready") }
+      } else { console.log("instance not ready"); }
     })
-    .catch(e => console.error(e))
+    .catch(e => console.error(e));
 }
 
 if (re.test(subdomain)) {

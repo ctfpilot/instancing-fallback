@@ -44,6 +44,22 @@ def load_css_styles():
         CSS_STYLES = f.read()
 
 def replace_indented_placeholder(template, placeholder, content):
+    """
+    Replaces a placeholder in a template string with the given content, preserving indentation.
+
+    For each line in the template containing the placeholder, the function determines the indentation
+    (the substring before the placeholder) and applies this indentation to each line of the replacement content.
+    The placeholder line is replaced by the content lines, each indented to match the original placeholder's indentation.
+
+    Args:
+        template (str): The template string containing the placeholder.
+        placeholder (str): The placeholder text to replace.
+        content (str): The content to insert at the placeholder location.
+
+    Returns:
+        str: The modified template with the placeholder replaced and indentation preserved.
+    """
+    
     lines = template.splitlines()
     new_lines = []
     for line in lines:
@@ -60,8 +76,7 @@ def generate():
     for content_name, content_data in CONTENTS:
         content_filename = content_name
         
-        layout = content_filename.split("_")[0]
-        filename = content_filename.split("_")[1]
+        layout, filename = content_filename.split("_", 1)
         
         layout_template = next((l for l_name, l in LAYOUTS if l_name == layout), None)
         if layout_template is None:
@@ -72,7 +87,7 @@ def generate():
         final_html = replace_indented_placeholder(final_html, "/**CHALLENGE_JS**/", JS_SCRIPTS)
         final_html = replace_indented_placeholder(final_html, "/**CHALLENGE_CSS**/", CSS_STYLES)
         
-        if (layout == "error"):
+        if layout == "error":
             final_html = final_html.replace("/**ERROR_CODE**/", filename)
         
         output_path = (Path(__file__).parent.absolute() / ".." / "public" / f"{filename}.html").resolve()

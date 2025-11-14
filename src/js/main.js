@@ -27,7 +27,7 @@ function checkChallengeReady() {
             } catch (e) {
               errorHandler(e);
             }
-          })
+          }).catch(e => errorHandler(e));
       } else { console.info("instance not ready"); }
     })
     .catch(e => errorHandler(e));

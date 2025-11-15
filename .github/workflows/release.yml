@@ -15,7 +15,8 @@ jobs:
     name: Release
     if: github.repository == 'ctfpilot/instancing-fallback'
     uses: the0mikkel/ci/.github/workflows/semver-release-standalone.yml@v1.4.1
-    secrets: inherit
+    secrets:
+      RELEASE_GH_TOKEN: ${{ secrets.RELEASE_GH_TOKEN }}
     with:
       ENVIRONMENT: Release
 

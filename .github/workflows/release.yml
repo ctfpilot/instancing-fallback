@@ -14,7 +14,11 @@ jobs:
       id-token: write
     name: Release
     if: github.repository == 'ctfpilot/instancing-fallback'
-    uses: the0mikkel/ci/.github/workflows/semver-release-standalone.yml@v1.4.0
+    environment: Release
+    uses: the0mikkel/ci/.github/workflows/semver-release-standalone.yml@v1.4.1
+    with:
+      ENVIRONMENT: Release
+      RELEASE_GH_TOKEN: ${{ secrets.RELEASE_GH_TOKEN }}
 
   docker:
     name: Docker build and push

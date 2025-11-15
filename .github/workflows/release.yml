@@ -13,12 +13,11 @@ jobs:
       packages: write
       id-token: write
     name: Release
-    if: github.repository == 'ctfpilot/instancing-fallback'
     uses: ctfpilot/ci/.github/workflows/release.yml@v1.1.0
     secrets:
       RELEASE_GH_TOKEN: ${{ secrets.RELEASE_GH_TOKEN }}
     with:
-      repository: instance-fallback
+      repository: ctfpilot/instancing-fallback
       ENVIRONMENT: Release
 
   docker:

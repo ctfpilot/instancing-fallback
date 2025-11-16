@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: ctfpilot
     app.kubernetes.io/name: instance-fallback
-    app.kubernetes.io/version: 1.0.0-r.2
+    app.kubernetes.io/version: 1.0.0-r.3
     app.kubernetes.io/component: challenges
     ctfpilot.com/component: instance-fallback
 
@@ -25,7 +25,7 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: instancing-fallback
-          image: ctfpilot/instance-fallback:1.0.0-r.2
+          image: ctfpilot/instance-fallback:1.0.0-r.3
           imagePullPolicy: Always
           ports:
           - name:  http
@@ -51,7 +51,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: ctfpilot
     app.kubernetes.io/name: instance-fallback
-    app.kubernetes.io/version: 1.0.0-r.2
+    app.kubernetes.io/version: 1.0.0-r.3
     app.kubernetes.io/component: challenges
     ctfpilot.com/component: instance-fallback
 spec:

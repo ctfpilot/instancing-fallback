@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: instance-fallback
+  name: instancing-fallback
   labels:
     app.kubernetes.io/part-of: ctfpilot
-    app.kubernetes.io/name: instance-fallback
-    app.kubernetes.io/version: 1.0.0
+    app.kubernetes.io/name: instancing-fallback
+    app.kubernetes.io/version: 1.0.1-r.1
     app.kubernetes.io/component: challenges
-    ctfpilot.com/component: instance-fallback
+    ctfpilot.com/component: instancing-fallback
 
 spec:
   # HA setup
   replicas: 3
   selector:
     matchLabels:
-      ctfpilot.com/component: instance-fallback
+      ctfpilot.com/component: instancing-fallback
 
   template:
     metadata:
       labels:
-        ctfpilot.com/component: instance-fallback
+        ctfpilot.com/component: instancing-fallback
     spec:
       enableServiceLinks: false
       automountServiceAccountToken: false
       containers:
         - name: instancing-fallback
-          image: ctfpilot/instance-fallback:1.0.0
+          image: ctfpilot/instancing-fallback:1.0.1-r.1
           imagePullPolicy: Always
           ports:
           - name:  http
@@ -47,16 +47,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: instance-fallback
+  name: instancing-fallback
   labels:
     app.kubernetes.io/part-of: ctfpilot
-    app.kubernetes.io/name: instance-fallback
-    app.kubernetes.io/version: 1.0.0
+    app.kubernetes.io/name: instancing-fallback
+    app.kubernetes.io/version: 1.0.1-r.1
     app.kubernetes.io/component: challenges
-    ctfpilot.com/component: instance-fallback
+    ctfpilot.com/component: instancing-fallback
 spec:
   selector:
-    ctfpilot.com/component: instance-fallback
+    ctfpilot.com/component: instancing-fallback
   ports:
   - name: http
     port: 80

@@ -35,3 +35,16 @@ jobs:
       semver: ${{ needs.release.outputs.version }}
       arguments: |
         VERSION=${{ needs.release.outputs.version }}
+
+  update-develop:
+    if: github.ref == 'refs/heads/main'
+    name: "Update Develop Branch"
+    needs:
+      - release
+    uses: ctfpilot/ci/.github/workflows/develop-update.yml@v1.2.0
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    with:
+      repository: ctfpilot/instancing-fallback

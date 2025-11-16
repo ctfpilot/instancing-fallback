@@ -7,7 +7,9 @@ const parser = new DOMParser();
 
 function errorHandler(e) {
   console.error("Error during challenge readiness check:", e);
-  location.reload();
+  setTimeout(() => {
+    location.reload();
+  }, 5000);
 }
 
 function checkChallengeReady() {

@@ -14,7 +14,7 @@ permissions:
 jobs:
   CLAAssistant:
     name: "CLA Assistant"
-    uses: ctfpilot/ci/.github/workflows/cla-assistant.yml@v1.2.9
+    uses: ctfpilot/ci/.github/workflows/cla-assistant.yml@v1.3.0
     secrets: inherit
     with:
       repository: instancing-fallback

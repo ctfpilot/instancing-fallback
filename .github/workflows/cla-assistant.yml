@@ -17,4 +17,4 @@ jobs:
     uses: ctfpilot/ci/.github/workflows/cla-assistant.yml@v1.2.5
     secrets: inherit
     with:
-      repository: instance-fallback
+      repository: instancing-fallback

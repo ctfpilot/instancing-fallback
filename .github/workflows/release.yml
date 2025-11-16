@@ -13,7 +13,7 @@ jobs:
       packages: write
       id-token: write
     name: Release
-    uses: ctfpilot/ci/.github/workflows/release.yml@v1.2.7
+    uses: ctfpilot/ci/.github/workflows/release.yml@v1.2.8
     secrets:
       RELEASE_GH_TOKEN: ${{ secrets.RELEASE_GH_TOKEN }}
     with:

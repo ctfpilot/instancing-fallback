@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: ctfpilot
     app.kubernetes.io/name: instancing-fallback
-    app.kubernetes.io/version: 1.0.1
+    app.kubernetes.io/version: 1.0.2
     app.kubernetes.io/component: challenges
     ctfpilot.com/component: instancing-fallback
 
@@ -25,7 +25,7 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: instancing-fallback
-          image: ctfpilot/instancing-fallback:1.0.1
+          image: ghcr.io/ctfpilot/instancing-fallback:1.0.2
           imagePullPolicy: Always
           ports:
           - name:  http
@@ -51,7 +51,7 @@ metadata:
   labels:
     app.kubernetes.io/part-of: ctfpilot
     app.kubernetes.io/name: instancing-fallback
-    app.kubernetes.io/version: 1.0.1
+    app.kubernetes.io/version: 1.0.2
     app.kubernetes.io/component: challenges
     ctfpilot.com/component: instancing-fallback
 spec:

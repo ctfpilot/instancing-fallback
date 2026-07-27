@@ -23,7 +23,6 @@ docker compose up -d
 ## Pages
 
 Each page is generated from a file in [`src/content`](./src/content) (see [Development](#development) below) and is served as static HTML behind a reverse proxy. Which page is shown is determined by whichever HTTP status code the proxy maps to this service.
-Screenshots below are available in both light and dark mode.
 
 The page content is hidden until client-side JavaScript decides which of two states to show, based on whether the request's subdomain matches the expected `<slug>-<16 hex chars>` challenge-instance pattern:
 

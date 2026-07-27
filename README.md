@@ -20,6 +20,47 @@ The service can also be run locally, using the provided Docker compose file:
 docker compose up -d
 ```
 
+## Pages
+
+Each page is generated from a file in [`src/content`](./src/content) (see [Development](#development) below) and is served as static HTML behind a reverse proxy. Which page is shown is determined by whichever HTTP status code the proxy maps to this service.
+
+The page content is hidden until client-side JavaScript decides which of two states to show, based on whether the request's subdomain matches the expected `<slug>-<16 hex chars>` challenge-instance pattern:
+
+- **Valid instance subdomain**: shows the page's "instance is offline/starting" message below, and polls the origin every few seconds, reloading automatically once the real challenge instance responds.
+- **Anything else** (e.g. a misconfigured or unmapped domain): shows a generic **"Invalid URL!"** message instead, regardless of which page was requested.
+
+If JavaScript is disabled entirely, neither state is shown; a plain warning that automatic reloading is unavailable is displayed instead.
+
+| Page        | Title (valid subdomain)                     | Intended use                                                                  |
+| ----------- | -------------------------------------------- | ------------------------------------------------------------------------------ |
+| `index.html` | The challenge instance is offline            | Default fallback page, e.g. when there is no more specific error page          |
+| `404.html`   | The challenge instance is offline            | Same message as `index.html` (minor wording difference only)                   |
+| `502.html`   | Bad gateway                                  | The challenge did not answer correctly, it may still be starting up            |
+| `503.html`   | Your personal challenge instance is starting | The challenge is not yet ready                                                 |
+| `504.html`   | Gateway timeout                              | The challenge was too slow to respond                                          |
+
+<details>
+<summary>Preview of each page (valid subdomain state)</summary>
+
+| Page | Light mode | Dark mode |
+| --- | --- | --- |
+| **Index** | ![Index page](docs/images/index.png) | ![Index page, dark mode](docs/images/index-dark.png) |
+| **404** | ![404 page](docs/images/404.png) | ![404 page, dark mode](docs/images/404-dark.png) |
+| **502 Bad gateway** | ![502 page](docs/images/502.png) | ![502 page, dark mode](docs/images/502-dark.png) |
+| **503 Starting** | ![503 page](docs/images/503.png) | ![503 page, dark mode](docs/images/503-dark.png) |
+| **504 Gateway timeout** | ![504 page](docs/images/504.png) | ![504 page, dark mode](docs/images/504-dark.png) |
+
+</details>
+
+<details>
+<summary>Preview of the "Invalid URL" state (shown on every page for a non-matching subdomain)</summary>
+
+| Light mode | Dark mode |
+| --- | --- |
+| ![Invalid URL page](docs/images/wrong-domain.png) | ![Invalid URL page, dark mode](docs/images/wrong-domain-dark.png) |
+
+</details>
+
 ### Development
 
 In order to generate the pages, run the [`generator.py`](./src/generator.py) script in `src`:

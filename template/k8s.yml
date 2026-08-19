@@ -25,7 +25,7 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: instancing-fallback
-          image: ctfpilot/instancing-fallback:{ .Version }
+          image: ghcr.io/ctfpilot/instancing-fallback:{ .Version }
           imagePullPolicy: Always
           ports:
           - name:  http

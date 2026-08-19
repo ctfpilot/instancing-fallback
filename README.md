@@ -20,6 +20,15 @@ The service can also be run locally, using the provided Docker compose file:
 docker compose up -d
 ```
 
+A [Docker image](https://github.com/ctfpilot/instancing-fallback/pkgs/container/instancing-fallback) is automatically built and published to GitHub Container Registry for each release.  
+You can pull the latest image with:
+
+```sh
+docker pull ghcr.io/ctfpilot/instancing-fallback:latest
+```
+
+*For the versions available, please the the [releases page](https://github.com/ctfpilot/instancing-fallback/releases).*
+
 ### Development
 
 In order to generate the pages, run the [`generator.py`](./src/generator.py) script in `src`:
@@ -29,6 +38,9 @@ python3 src/generator.py
 ```
 
 *This is done automatically in the Docker container build process.*
+
+To update the Kubernetes deployment file, update the deployment template in `template/k8s.yml`.  
+An updated `k8s/k8s.yml` will then be automatically generated on the next release.
 
 ## Contributing
 
@@ -45,7 +57,7 @@ To administrate the CLA signing process, we are using **[CLA assistant lite](htt
 
 ## License
 
-This schema and repository is licensed under the **EUPL-1.2 License**.  
+This component and repository is licensed under the **EUPL-1.2 License**.  
 You can find the full license in the **[LICENSE](LICENSE)** file.
 
 We encourage all modifications and contributions to be shared back with the community, for example through pull requests to this repository.  

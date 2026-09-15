@@ -2,7 +2,7 @@ const POLL_INTERVAL = 5000;
 
 // Check subdomain matches
 const subdomain = window.location.host.split(".")[0];
-const re = new RegExp("^[a-z0-9-]+-[a-f0-9]{16}$");
+const re = new RegExp("^[a-z0-9-]+-[a-f0-9]{16}(-[a-z0-9-]*)?$");
 const parser = new DOMParser();
 
 function errorHandler(e) {
